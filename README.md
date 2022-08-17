@@ -21,7 +21,7 @@
 
 ### 루아 배우기
 
-루아에 익숙하지 않다면 여기 시작하기에 좋은 자료들이 많이 있습니다.
+루아에 익숙하지 않다면 여기에 시작하기 좋은 자료들이 많이 있습니다.
 
 - ['X를 Y분 만에 배우자'의 루아 페이지](https://learnxinyminutes.com/docs/lua/)에서는 기본적인 것들을 빠르게 훑어볼 수 있습니다.
 - [이 가이드](https://github.com/medwatt/알림s/blob/main/Lua/Lua_Quick_Guide.ipynb)도 빠르게 시작하기 좋은 자료입니다.
@@ -73,7 +73,7 @@ Neovim은 `init.vim` 대신 `init.lua` 파일을 설정(configuration) 파일로
 
 ### 모듈
 
-루아 모듈들은 Neovim의 `runtimepath` (대부분의 \*nix 시스템 [*맥 | 리눅스*] 에서는 `~/.config/nvim/lua`, 윈도우에서는 `~/AppData/Local/nvim/lua` ) 안의 `lua/` 폴더 안에 위치합니다. 이 폴더 안에 있는 루아 파일들은 모듈로서 `require()` 할 수 있습니다.
+루아 모듈들은 Neovim의 `runtimepath`(대부분의 \*nix 시스템 [*맥 | 리눅스*] 에서는 `~/.config/nvim/lua`, 윈도우에서는 `~/AppData/Local/nvim/lua`)안의 `lua/` 폴더에 위치합니다. 이 폴더에 있는 루아 파일들은 모듈로 `require()` 할 수 있습니다.
 
 다음 폴더 구조를 예시로 한 번 봐봅시다:
 
@@ -263,7 +263,6 @@ Neovim은 루아 파일을 가져오기 위해 다음 3개의 실행 명령어�
     - `runtimepath`의 `lua/` 폴더 안에 위치한 모듈들을 검색합니다.
     - 어떤 모듈들이 불러와졌는지 계속 추적하여 스크립트가 두 번 파싱되거나 실행되는 것을 방지합니다. 만약 네오빔이 실행되고 있는 중에 모듈의 코드 파일을 수정하고 다시 `require()`를 실행한다면 모듈이 업데이트 되지 않을 것입니다.
 - `:luafile`, `:source` and `:runtime`:
-    - are Ex commands. They do not support modules
     - Ex 명령어들입니다. 모듈을 지원하지 않습니다.
     - 이전에 실행되었었는지 여부와 상관없이 스크립트의 내용을 실행합니다.
     - `:luafile`과 `:source`는 현재 창의 작업 디렉터리(cwd)에서 상대 경로 혹은 절대 경로를 받습니다.
@@ -315,8 +314,7 @@ lua X = function(k, v) return string.format("%s:%s", k, v) end
 echo map([1, 2, 3], luaeval("X"))
 ```
 
-`luaeval()` takes an optional second argument that allows you to pass data to the expression. You can then access that data from Lua using the magic global `_A`:
-`luaeval()`의 두 번째 인자로 루아 표현식에 데이터를 전달하는 것도 가능합니다. 그 데이터는 루아 전역 변수인 `_A`를 사용해 접근할 수 있습니다.
+`luaeval()`의 두 번째 인자로 루아 표현식에 데이터를 전달하는 것도 가능합니다. 그 데이터는 루아 전역 변수인 `_A`를 사용해 접근할 수 있습니다:
 
 ```vim
 echo luaeval('_A[1] + _A[2]', [1, 1])
@@ -359,7 +357,6 @@ EOF
 
 set statusline=%!v:lua.statusline()
 
-" Also works in expression mappings
 " 표현식 매핑들에서도 작동합니다.
 lua << EOF
 function _G.check_back_space()
@@ -373,7 +370,6 @@ inoremap <silent> <expr> <Tab>
     \ v:lua.check_back_space() ? "\<Tab>" :
     \ completion#trigger_completion()
 
-" Call a function from a Lua module by using single quotes and omitting parentheses:
 " 생략된 괄호와 작은 따옴표를 사용하여 루아 모듈에서 함수를 호출하기:
 call v:lua.require'module'.foo()
 ```
@@ -662,7 +658,6 @@ print(vim.api.nvim_buf_get_option(10, 'shiftwidth')) -- 4
 
 ### 메타-접근자(meta-accessors)들 사용하기
 
-A few meta-accessors are available if you want to set options in a more "idiomatic" way. They essentially wrap the above API functions and allow you to manipulate options as if they were variables:
 몇몇 메타-접근자는 옵션 세팅을 좀 더 "관용적"으로 할 수 있게 도와줍니다. 이것들은 본질적으로 위의 API 함수들을 감싸둔 것과 같으며 옵션들을 변수처럼 조작할 수 있게 합니다.
 
 - [`vim.o`](https://neovim.io/doc/user/lua.html#vim.o): `:let &{option-name}`과 같습니다.
@@ -748,7 +743,6 @@ vim.opt.whichwrap = vim.opt.whichwrap - { 'b', 's' }
     - [`vim.api.nvim_set_vvar()`](https://neovim.io/doc/user/api.html#nvim_set_vvar())
     - [`vim.api.nvim_get_vvar()`](https://neovim.io/doc/user/api.html#nvim_get_vvar())
 
-With the exception of predefined Vim variables, they can also be deleted (the `:unlet` command is the equivalent in Vimscript). Local variables (`l:`), script variables (`s:`) and function arguments (`a:`) cannot be manipulated as they only make sense in the context of a Vim script, Lua has its own scoping rules.
 미리 정의된 빔 변수들을 제외하고는 삭제할 수도 있습니다(빔스크립트에서는 `:unlet` 커맨드와 같습니다). 로컬 변수 (`l:`), 스크립트 변수 (`s:`),
 함수 인자 (`a:`)는  조작할 수 없습니다. 이것들은 빔스크립트의 문맥에서만 의미가 있고, 루아에서는 루아의 스코핑 규칙이 있습니다.
 
