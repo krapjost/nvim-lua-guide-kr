@@ -1,6 +1,6 @@
 :arrow_upper_left: (Feeling lost? Use the GitHub TOC!)
 
-# Neovim에서 Lua 사용 시작하기
+# Neovim에서 Lua 사용하기
 
 ## 번역
 
@@ -31,7 +31,7 @@
 - [루아 공식 레퍼런스 매뉴얼](https://www.lua.org/manual/5.1/)은 가장 광범위한 자료를 둘러볼 수 있습니다.(빔 에디터 내에서 읽고 싶다면 Vimdoc 플러그인으로도 있습니다.: [milisims/nvim-luaref](https://github.com/milisims/nvim-luaref))
 
 먼저 루아는 정말 깔끔하고 단순한 언어라는 것을 말하고 시작하고 싶습니다. 배우기 쉬운 언어이고,
-특히 자바스크립트같은 스트립팅 언어에 대한 경험이 있다면 더욱 쉽게 배울 수 있습니다.
+특히 자바스크립트 같은 스트립트 언어에 대한 경험이 있다면 더욱 쉽게 배울 수 있습니다.
 아마 이미 생각보다 루아에 대해 더 많은 것을 알고 있을지도 모릅니다.
 
 알림: 네오빔에 내장된 루아 컴파일러는 [LuaJIT](https://staff.fnwi.uva.nl/h.vandermeer/docs/lua/luajit/luajit_intro.html) 2.1.0 버전입니다. 루아 5.1 버전과 호환 가능합니다.
@@ -66,7 +66,7 @@
 
 Neovim은 `init.vim` 대신 `init.lua` 파일을 설정(configuration) 파일로 로딩할 수도 있습니다.
 
-알림: `init.lua` 파일을 사용하는 것은 물론 _완전히_ 선택 가능합니다. `init.vim`을 사용해도 상관 없으며 여전히 유효한 설정입니다. vim의 기능들 중 몇몇은 아직 루아로 접근할 수 없다는 것도 기억하면 좋습니다.
+알림: `init.lua` 파일을 사용하는 것은 물론 _완전히_ 선택사항입니다. `init.vim`을 사용해도 상관없으며 여전히 유효한 설정입니다. vim의 기능 중 몇몇은 아직 루아로 접근할 수 없다는 것도 기억하면 좋습니다.
 
 자세한 정보:
 - [`:help config`](https://neovim.io/doc/user/starting.html#config)
@@ -110,7 +110,7 @@ require('other_modules/anothermodule')
 
 경로 구분자는 `.`이나 `/`로 표기됩니다.
 
-`init.lua` 파일을 포함하고 있는 폴더는 파일 이름을 지정하지 않아도 바로 불러올 수 있습니다.
+`init.lua` 파일을 포함하고 있는 폴더는 파일 이름을 명시하지 않아도 바로 불러올 수 있습니다.
 
 ```lua
 require('other_modules') -- loads other_modules/init.lua
@@ -135,7 +135,7 @@ end
 
 만약 두개의 다른 플러그인이 `lua/main.lua` 파일을 가지고 있다면, `require('main')` 을 실행할 때 어떤 파일을 불러야 하는지 알기 힘듭니다.
 
-그래서 당신의 설정 파일이나 플러그인들의 namespace를 최상위 폴더와 같이 관리하는 것도 좋은 아이디어일 수 있습니다. 다음과 같이요:
+그래서 당신의 설정 파일이나 플러그인들의 이름공간을 최상위 폴더와 같이 관리하는 것도 좋은 아이디어일 수 있습니다. 다음과 같이요:
 `lua/plugin_name/main.lua`
 
 
@@ -254,7 +254,7 @@ Neovim은 루아 파일을 가져오기 위해 다음 3개의 실행 명령어�
 - [`:help :source`](https://neovim.io/doc/user/repeat.html#:source)
 - [`:help :runtime`](https://neovim.io/doc/user/repeat.html#:runtime)
 
-#### 루아 파일 가져오기 (sourcing) vs require() 호출하기:
+#### 루아 파일 가져오기(sourcing) vs require() 호출하기:
 
 `require()` 함수를 호출하는 것과 직접 루아 파일을 소싱하는 것의 차이와 어떤 것을 언제 사용해야 할지 궁금할 겁니다. 둘은 다음과 같은 서로 다른 사용 사례들이 있습니다:
 
@@ -283,7 +283,7 @@ let concat = luaeval('"Lua".." is ".."awesome"')
 echo concat
 " 'Lua is awesome'
 
-" 루아의 List-like 테이블은 빔의 리스트로 변환됩니다.
+" 루아의 리스트 형태의 테이블은 빔의 리스트로 변환됩니다.
 let list = luaeval('{1, 2, 3, 4}')
 echo list[0]
 " 1
@@ -291,7 +291,7 @@ echo list[1]
 " 2
 " 알림 루아의 테이블은 1부터 인덱싱 되지만 빔의 리스트는 0부터입니다.
 
-" Dict-like 테이블은 빔의 딕셔너리로 변환됩니다.
+" 딕셔너리 형태의 테이블은 빔의 딕셔너리로 변환됩니다.
 let dict = luaeval('{foo = "bar", baz = "qux"}')
 echo dict.foo
 " 'bar'
@@ -302,7 +302,7 @@ echo luaeval('true')
 echo luaeval('nil')
 " v:null
 
-" 루아 함수들을 빔스크립트에서 alias를 만들어 사용할 수도 있습니다.
+" 루아 함수들을 빔스크립트 alias로 만들어 사용할 수도 있습니다.
 let LuaMathPow = luaeval('math.pow')
 echo LuaMathPow(2, 2)
 " 4
@@ -370,7 +370,7 @@ inoremap <silent> <expr> <Tab>
     \ v:lua.check_back_space() ? "\<Tab>" :
     \ completion#trigger_completion()
 
-" 생략된 괄호와 작은 따옴표를 사용하여 루아 모듈에서 함수를 호출하기:
+" 작은 따옴표를 사용하고 괄호를 생략하여 루아 모듈에서 함수 호출:
 call v:lua.require'module'.foo()
 ```
 
@@ -454,7 +454,7 @@ put({1, 2, 3})
 
 ### vim.api.nvim_eval()
 
-이 함수는 빔스크립트 표현식 문자열에서 값을 리턴합니다. 빔스크립트의 데이터 타입들은 자동적으로 루아 타입으로 변환됩니다.
+이 함수는 빔스크립트 표현식을 평가하고 값을 리턴합니다. 빔스크립트의 데이터 타입들은 자동적으로 루아 타입으로 변환됩니다.
 
 빔스크립트에서의 `luaeval()` 함수와 동일합니다.
 
@@ -473,7 +473,7 @@ print(vim.api.nvim_eval('v:null')) -- nil
 
 ### vim.api.nvim_exec()
 
-이 함수는 빔스크립트 코드 조각을 평가합니다. 실행할 소스 코드 문자열과 코드의 결과가 리턴할지 지정하는 boolean 값을 인자로 받습니다. (결과값을 변수에 할당하는 것도 가능합니다).
+이 함수는 빔스크립트 코드 조각을 평가합니다. 실행할 소스 코드 문자열과 코드의 결과를 리턴할지 정하는 boolean 값을 인자로 받습니다. (결과값을 변수에 할당하는 것도 가능합니다).
 
 ```lua
 local result = vim.api.nvim_exec(
@@ -541,7 +541,7 @@ vim.cmd([[%s/\Vfoo/bar/g]])
 
 이 API 함수는 터미널 코드와 빔 키코드를 escape 할 수 있게 해줍니다.
 
-빔스크립트로 씌여진 다음과 같은 키 매핑이 있습니다:
+빔스크립트로 쓴 다음과 같은 키 매핑이 있습니다:
 
 ```vim
 inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
@@ -743,8 +743,8 @@ vim.opt.whichwrap = vim.opt.whichwrap - { 'b', 's' }
     - [`vim.api.nvim_set_vvar()`](https://neovim.io/doc/user/api.html#nvim_set_vvar())
     - [`vim.api.nvim_get_vvar()`](https://neovim.io/doc/user/api.html#nvim_get_vvar())
 
-미리 정의된 빔 변수들을 제외하고는 삭제할 수도 있습니다(빔스크립트에서는 `:unlet` 커맨드와 같습니다). 로컬 변수 (`l:`), 스크립트 변수 (`s:`),
-함수 인자 (`a:`)는  조작할 수 없습니다. 이것들은 빔스크립트의 문맥에서만 의미가 있고, 루아에서는 루아의 스코핑 규칙이 있습니다.
+미리 정의된 빔 변수를 제외한 다른 변수는 삭제도 가능합니다(빔스크립트에서는 `:unlet` 커맨드와 같습니다). 로컬 변수 (`l:`), 스크립트 변수 (`s:`),
+함수 인자 (`a:`)는  조작할 수 없습니다. 이것들은 빔스크립트의 문맥에서만 의미가 있고, 루아는 다른 스코핑 규칙을 가지고 있습니다.
 
 이런 변수들과 친숙하지 않다면 [`:help internal-variables`](https://neovim.io/doc/user/eval.html#internal-variables)를 보시면 좀 더 자세한 설명을 읽을 수 있습니다.
 
@@ -949,7 +949,7 @@ vim.api.nvim_set_keymap('n', '<Leader>ex', '', {
 })
 ```
 
-`vim.api.nvim_get_keymap()`은 모드의 짧은 이름 문자열(위의 테이블)을 인수로 받고 해당 모드에 포함된 매핑들을 테이블로 반환합니다.
+`vim.api.nvim_get_keymap()`은 모드의 짧은 이름 문자열(위의 테이블 참고)을 인수로 받고 해당 모드에 포함된 매핑들을 테이블로 반환합니다.
 
 
 ```lua
@@ -1004,7 +1004,7 @@ vim.keymap.set({'n', 'c'}, '<Leader>ex2', '<Cmd>lua vim.notify("Example 2")<CR>'
 vim.keymap.set('n', '<Leader>ex1', '<Cmd>echomsg "Example 1"<CR>')
 vim.keymap.set('n', '<Leader>ex2', function() print("Example 2") end)
 vim.keymap.set('n', '<Leader>pl1', require('plugin').plugin_action)
--- 모듈을 require 할 때 드는 시작 비용을 피하기 위해서 function으로 감싸 매핑을 부를 때 (layzily) require 할 수 있게 합니다:
+-- 모듈을 불러올 때 드는 시작 비용을 피하기 위해 require를 function으로 감싸 매핑을 호출할 때 실행되도록 할 수 있습니다:
 vim.keymap.set('n', '<Leader>pl2', function() require('plugin').plugin_action() end)
 ```
 
@@ -1300,7 +1300,7 @@ echo g:lua_false
 
 ### Linters/Lanuage servers 설정하기
 
-루아 프로젝트에 diagnostics와 autocompletion를 적용하기 위해 린터나 랭귀지 서버를 사용한다면 네오빔 특정 세팅을 설정해줘야 합니다. 여기 유명한 도구들을 위한 추천하는 세팅이 몇 개 있습니다:
+루아 프로젝트에 diagnostics와 autocompletion를 적용하기 위해 린터나 랭귀지 서버를 사용한다면 네오빔 특정 세팅을 설정해줘야 합니다. 여기 자주 사용되는 도구들을 위한 추천하는 세팅이 몇 개 있습니다:
 
 #### luacheck
 
@@ -1328,7 +1328,7 @@ globals = {
 
 #### coc.nvim
 
-[rafcamlet/coc-nvim-lua](https://github.com/rafcamlet/coc-nvim-lua/)는 [coc.nvim](https://github.com/neoclide/coc.nvim/)을 위한 자동완성 소스입니다.
+[rafcamlet/coc-nvim-lua](https://github.com/rafcamlet/coc-nvim-lua/)는 [coc.nvim](https://github.com/neoclide/coc.nvim/)을 위한 자동완성 소스입니다. Neovim stdlib에 자동완성 항목들을 제공합니다.
 
 ### 루아 코드 디버깅하기
 
@@ -1371,7 +1371,7 @@ nvim -V1
 
 [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)는 Luarocks 패키지를 지원합니다. [README](https://github.com/wbthomason/packer.nvim/#luarocks-support)에 세팅 방법에 대한 지침이 있습니다.
 
-## 잡다
+## 그 외
 
 ### vim.loop
 
@@ -1386,9 +1386,9 @@ nvim -V1
 
 ### vim.lsp
 
-`vim.lsp`는 빌트인 LSP 클라이언트를 제어하는 모듈입니다. [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/) 리포지터리에 유명한 language server들의 기본 설정 방법을 설명하고 있습니다.
+`vim.lsp`는 빌트인 LSP 클라이언트를 제어하는 모듈입니다. [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/) 리포지터리에 자주 쓰이는 language server들의 기본 설정 방법을 설명하고 있습니다.
 
-클라이언트 동작은 "lap-handlers"를 사용해 구성할 수 있습니다. 자세한 정보:
+클라이언트 동작은 "lsp-handlers"를 사용해 구성할 수 있습니다. 자세한 정보:
 - [`:help lsp-handler`](https://neovim.io/doc/user/lsp.html#lsp-handler)
 - [neovim/neovim#12655](https://github.com/neovim/neovim/pull/12655)
 - [How to migrate from diagnostic-nvim](https://github.com/nvim-lua/diagnostic-nvim/issues/73#issue-737897078)
