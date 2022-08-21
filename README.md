@@ -13,7 +13,7 @@
 
 ## 소개
 
-[네오빔에서 first-class 언어](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)로서 [통합된 루아](https://www.youtube.com/watch?v=IP3J56sKtn0)는 킬러 피쳐들 중 하나로 자리잡고 있습니다.
+[개발 언어](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)로서 네오빔에 [통합된 루아](https://www.youtube.com/watch?v=IP3J56sKtn0)는 네오빔의 중요한 특징 중 하나로 자리잡고 있습니다.
 하지만 루아로 플러그인 작성하는 방법에 대해 배울 수 있는 자료는 빔스크립트로 작성하는 방법에 비해 많지 않습니다.
 그래서 사람들이 좀 더 쉽게 시작할 수 있도록 기본적인 정보를 제공하려고 합니다.
 
