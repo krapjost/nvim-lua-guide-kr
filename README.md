@@ -13,32 +13,32 @@
 
 ## 소개
 
-[개발 언어](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)로서 네오빔에 [통합된 루아](https://www.youtube.com/watch?v=IP3J56sKtn0)는 네오빔의 중요한 특징 중 하나로 자리잡고 있습니다.
-하지만 루아로 플러그인 작성하는 방법에 대해 배울 수 있는 자료는 빔스크립트로 작성하는 방법에 비해 많지 않습니다.
-그래서 사람들이 좀 더 쉽게 시작할 수 있도록 기본적인 정보를 제공하려고 합니다.
+[개발 언어](https://github.com/neovim/neovim/wiki/FAQ#why-embed-lua-instead-of-x)로 네오빔에 [통합된 루아](https://www.youtube.com/watch?v=IP3J56sKtn0)는 네오빔의 주요한 특징 중 하나로 자리잡고 있습니다.
+하지만 루아로 플러그인을 작성하는 방법에 대한 자료는 빔스크립트에 비해 많지 않습니다.
+그래서 사람들이 더 쉽게 시작할 수 있도록 기본적인 정보를 제공하려고 합니다.
 
-이 가이드는 당신이 최소 Neovim 0.5 버전 이상을 사용하고 있다고 가정합니다.
+이 가이드는 여러분이 Neovim 0.5 버전 이상을 사용하고 있다고 가정하고 작성되었습니다.
 
 ### 루아 배우기
 
-루아에 익숙하지 않다면 여기에 시작하기 좋은 자료들이 많이 있습니다.
+루아 언어에 익숙하지 않다면 여기 시작하기 좋은 자료들이 있습니다:
 
 - ['X를 Y분 만에 배우자'의 루아 페이지](https://learnxinyminutes.com/docs/lua/)에서는 기본적인 것들을 빠르게 훑어볼 수 있습니다.
 - [이 가이드](https://github.com/medwatt/알림s/blob/main/Lua/Lua_Quick_Guide.ipynb)도 빠르게 시작하기 좋은 자료입니다.
-- 당신이 비디오로 배우는 것을 더 선호한다면 Derek Banas의 [1 시간짜리 튜토리얼](https://www.youtube.com/watch?v=iMacxZQMPXs)도 있습니다.
+- 당신이 비디오로 배우는 것을 더 선호한다면 Derek Banas의 [1시간 짜리 튜토리얼](https://www.youtube.com/watch?v=iMacxZQMPXs)도 있습니다.
 - 실행 가능한 예제와 함께 좀 더 인터랙티브하게 배우고 싶다면 [루아 스크립트 튜토리얼](https://www.luascript.dev/learn)도 있습니다.
 - [루아 유저 위키](http://lua-users.org/wiki/LuaDirectory)에는 루아와 관련된 유용한 정보들이 많이 있습니다.
 - [루아 공식 레퍼런스 매뉴얼](https://www.lua.org/manual/5.1/)은 가장 광범위한 자료를 둘러볼 수 있습니다.(빔 에디터 내에서 읽고 싶다면 Vimdoc 플러그인으로도 있습니다.: [milisims/nvim-luaref](https://github.com/milisims/nvim-luaref))
 
-먼저 루아는 정말 깔끔하고 단순한 언어라는 것을 말하고 시작하고 싶습니다. 배우기 쉬운 언어이고,
-특히 자바스크립트 같은 스트립트 언어에 대한 경험이 있다면 더욱 쉽게 배울 수 있습니다.
-아마 이미 생각보다 루아에 대해 더 많은 것을 알고 있을지도 모릅니다.
+먼저 루아는 깔끔하고 단순한 언어라는 것을 말씀드리고 싶습니다. 쉽게 배울 수 있습니다.
+특히 자바스크립트 같은 스트립팅 언어에 경험이 있다면 더욱 쉽게 배울 수 있으실 겁니다.
+어쩌면 이미 생각보다 더 많은 것을 알고 계실지도 모르지요.
 
 알림: 네오빔에 내장된 루아 컴파일러는 [LuaJIT](https://staff.fnwi.uva.nl/h.vandermeer/docs/lua/luajit/luajit_intro.html) 2.1.0 버전입니다. 루아 5.1 버전과 호환 가능합니다.
 
-### 네오빔에서 루아 작성하기에 대한 튜토리얼들
+### 네오빔에서 루아를 작성하는 법에 대한 튜토리얼들
 
-루아로 네오빔 설정하기에 관해 다음 튜토리얼들이 이미 있습니다. 그 중에서 이 가이드를 쓰는데 도움 받은 것도 있습니다. 작성자들에게 정말 감사합니다.
+루아로 플러그인 작성 방법에 대한 튜토리얼들은 이미 있습니다. 그 중에서 이 가이드를 쓰는데 도움을 받은 글들도 있습니다. 작성자들에게 감사드립니다.
 
 - [teukka.tech - From init.vim to init.lua](https://teukka.tech/luanvim.html)
 - [dev.to - How to write neovim plugins in Lua](https://dev.to/2nit/how-to-write-neovim-plugins-in-lua-5cca)
@@ -60,22 +60,22 @@
 - [nlua.nvim](https://github.com/tjdevries/nlua.nvim) - Neovim을 위한 루아 개발 도구
 - [BetterLua.vim](https://github.com/euclidianAce/BetterLua.vim) - 더 나은 루아 구문(syntax) 하이라이팅
 
-## Lua 파일들은 어디에 넣나요
+## 루아 파일들은 어디에 넣나요
 
 ### init.lua
 
-Neovim은 `init.vim` 대신 `init.lua` 파일을 설정(configuration) 파일로 로딩할 수도 있습니다.
+네오빔은 `init.vim` 대신 `init.lua` 파일을 설정(configuration) 파일로 로딩할 수 있습니다.
 
-알림: `init.lua` 파일을 사용하는 것은 물론 _완전히_ 선택사항입니다. `init.vim`을 사용해도 상관없으며 여전히 유효한 설정입니다. vim의 기능 중 몇몇은 아직 루아로 접근할 수 없다는 것도 기억하면 좋습니다.
+알림: `init.lua` 파일을 사용하는 것은 물론 _완전한_ 선택사항입니다. `init.vim`을 사용해도 상관없으며 여전히 유효한 설정입니다. 빔의 기능 중 몇몇은 아직 루아로 접근할 수 없다는 것도 알고 계시면 좋겠습니다.
 
 자세한 정보:
 - [`:help config`](https://neovim.io/doc/user/starting.html#config)
 
 ### 모듈
 
-루아 모듈들은 Neovim의 `runtimepath`(대부분의 \*nix 시스템 [*맥 | 리눅스*] 에서는 `~/.config/nvim/lua`, 윈도우에서는 `~/AppData/Local/nvim/lua`)안의 `lua/` 폴더에 위치합니다. 이 폴더에 있는 루아 파일들은 모듈로 `require()` 할 수 있습니다.
+루아 모듈들은 네오빔의 `runtimepath`(대부분의 \*nix 시스템 [*맥 | 리눅스*] 에서는 `~/.config/nvim/lua`, 윈도우에서는 `~/AppData/Local/nvim/lua`)안의 `lua/` 폴더에 위치합니다. 이 폴더에 있는 루아 파일들은 모듈로 `require()` 할 수 있습니다.
 
-다음 폴더 구조를 예시로 한 번 봐봅시다:
+다음 폴더 구조를 예시로 한 번 볼까요:
 
 ```text
 📂 ~/.config/nvim
@@ -98,7 +98,7 @@ Neovim은 `init.vim` 대신 `init.lua` 파일을 설정(configuration) 파일로
 require('myluamodule')
 ```
 
-`.lua` 확장자가 없는 것을 볼 수 있습니다.
+파일 이름에 `.lua` 확장자가 없는 것을 볼 수 있습니다.
 
 비슷하게, `other_modules/anothermodule.lua` 파일을 불러오는 것도 다음과 같습니다:
 
@@ -141,7 +141,7 @@ end
 
 ### Runtime files
 
-Vimscript 파일들과 마찬가지로, 루아 파일들도 당신의 `runtimepath`에 지정된 특별한 폴더들에서 자동적으로 불러와질 수 있습니다. 현재는 다음 폴더들이 지원되고 있습니다:
+빔스크립트 파일들과 마찬가지로, 루아 파일들도 당신의 `runtimepath`에 지정된 특별한 폴더들에서 자동적으로 불러와질 수 있습니다. 현재는 다음 폴더들이 지원되고 있습니다:
 
 - `colors/`
 - `compiler/`
@@ -161,7 +161,7 @@ Vimscript 파일들과 마찬가지로, 루아 파일들도 당신의 `runtimepa
 
 runtime 파일들이 Lua 모듈 시스템을 기반으로 하지 않기 때문에 두 플러그인들이 문제 없이 `plugin/main.lua` 파일을 가지고 있을 수 있습니다.
 
-## Vimscript에서 Lua 사용하기
+## 빔스크립트에서 루아 사용하기
 
 ### :lua
 
@@ -393,16 +393,15 @@ echo v:lua.some_global_dict['key']
 echo map([1, 2, 3], v:lua.global_callback)
 ```
 
-### Tips
+### 유용한 팁
 
 .vim 파일들 안에서 루아 신택스 하이라이팅을 보려면 `let g:vimsyn_enbed = 'l'`을 설정 파일에 적으면 됩니다.
 더 자세한 정보는 [`:help g: vimsyn_embed`](https://neovim.io/doc/user/syntax.html#g:vimsyn_embed)를 보세요.
 
 ## 빔 이름공간 (The vim namespace)
 
-루아로 vim의 API와 소통하기 위해 네오빔은 전역 변수 `vim`을 진입점으로서 제공하고 있습니다. 이는 사용자들에게 확장된 "standard library" 함수들과 다양한 서브모듈들을 제공합니다.
+루아로 빔의 API와 소통하기 위해 네오빔은 전역 변수 `vim`을 진입점으로 제공하고 있습니다. 이는 사용자들에게 확장된 "standard library" 함수들과 다양한 서브모듈들을 제공합니다.
 
-Some notable functions and modules include:
 알아둘만한 함수와 모듈들:
 
 - `vim.inspect`: 루아 오브젝트를 읽기 편한 문자열로 변환합니다. (table 값을 봐야할 때 유용합니다)
@@ -415,7 +414,7 @@ Some notable functions and modules include:
 
 이 목록이 전부는 아닙니다. `vim` 변수로 가능한 것들에 대해 더 알아보고 싶으시면 [`:help lua-stdlib`](https://neovim.io/doc/user/lua.html#lua-stdlib)와 [`:help lua-vim`](https://neovim.io/doc/user/lua.html#lua-vim)을 보시면 좋습니다. 또 `:lua print(vim.inspect(vim))`을 입력하시면 가능한 모든 모듈의 리스트를 보실 수 있습니다. API 함수들은 [`:help api-global`](https://neovim.io/doc/user/api.html#api-global)로 문서를 보실 수 있습니다.
 
-#### Tips
+#### 유용한 팁
 
 오브젝트를 확인하고 싶을 때마다 `print(vim.inspect(x))`를 적어야 하는 것은 조금 귀찮습니다. 설정 파일에 전역 wrapper 함수를 만들어 두는 것도 좋을 것 같습니다. (Neovim 0.7.0+ 부터는 이런 함수가 내장되어 있습니다. [`:help vim.pretty_print()`](https://neovim.io/doc/user/lua.html#vim.pretty_print())를 확인해 보세요.)
 
@@ -447,7 +446,7 @@ put({1, 2, 3})
 :lua =vim.loop
 ```
 
-어쩔 때는 루아의 빌트인 함수들이 다른 언어들에 비해 좀 부족하게 느껴질 수도 있습니다. (예를 들면 `os.clock()`같은 경우 milliseconds가 아닌 seconds만 리턴합니다.) 그럴 때는 Neovim의 stdlib(그리고 `vim.fn` - 후에 설명합니다)을 찾아보세요. 거기 원하는 것들이 있을지도 모릅니다.
+어떨 때는 루아의 빌트인 함수들이 다른 언어들에 비해 좀 부족하게 느껴질 수 있습니다. (예를 들면 `os.clock()`같은 경우 milliseconds가 아닌 seconds만 리턴합니다.) 그럴 때는 Neovim의 stdlib(그리고 `vim.fn` - 후에 설명합니다)을 찾아보세요. 거기 원하는 것들이 있을지도 모릅니다.
 
 
 ## 루아에서 빔스크립트 사용하기
@@ -523,7 +522,7 @@ echo g:multiline_list
 ]])
 ```
 
-#### Tips
+#### 유용한 팁
 
 이 함수들에는 문자열을 넘겨야 함으로, 종종 다음과 같이 백슬래시를 같이 사용해야 하는 경우가 있습니다:
 
@@ -826,7 +825,6 @@ echo g:variable
 " {'key': 'a'}
 ```
 
-This is a known issue:
 알려진 이슈입니다:
 
 - [Issue #12544](https://github.com/neovim/neovim/issues/12544)
@@ -865,7 +863,7 @@ Vim/Lua 오브젝트 변환이 자동적이란 점에 있어서 `vim.api.nvim_ca
 자세한 정보:
 - [`:help vim.fn`](https://neovim.io/doc/user/lua.html#vim.fn)
 
-#### Tips
+#### 유용한 팁
 
 네오빔에는 플러그인을 위해 유용하고 강력한 빌트인 함수 라이브러리가 있습니다. [`:help vim-function`](https://neovim.io/doc/user/eval.html#vim-function)를 보면 알파벳 순의 함수들을 확인할 수 있고 [`:help function-list`](https://neovim.io/doc/user/usr_41.html#function-list)를 보면 주제별로 구분된 함수 리스트를 확인할 수 있습니다.
 
@@ -924,7 +922,7 @@ end
 
 두 번째 인수는 왼쪽편의 매핑(매핑에 정의된 명령을 트리거할 키나 키조합)을 포함한 문자열을 받습니다. 빈 문자열은 키를 비활성화 하는 `<Nop>`과 동일합니다.
 
-셋 째 인수는 오른편의 매핑(실행할 명령)을 포함한 문자열입니다.
+셋째 인수는 오른편의 매핑(실행할 명령)을 포함한 문자열입니다.
 
 마지막 인수는 boolean 옵션들을 포함한 테이블입니다. 상세한 옵션은 [`:help :map-arguments`](https://neovim.io/doc/user/map.html#:map-arguments)에 정의되어 있습니다. (`noremap` 포함 `buffer` 제외). Neovim 0.7.0 버전부터는 매핑을 실행할 때 오른편 매핑 대신 `callback` 옵션으로 루아 함수를 부를 수도 있습니다.
 
@@ -1170,7 +1168,7 @@ vim.api.nvim_create_user_command('Test', function() end, {
 
 (이 섹션은 현재 작업 중입니다)
 
-네오빔 0.7.0+ 에는 autocommands를 위한 API 함수들이 있습니다. (`:help api-autocmd`에 상세한 설명)
+네오빔 0.7.0+ 에는 autocommands를 위한 API 함수들이 있습니다. (`:help api-autocmd`에 상세한 설명이 있습니다.)
 
 - [Pull request #14661](https://github.com/neovim/neovim/pull/14661) (lua: autocmds take 2)
 
@@ -1200,8 +1198,7 @@ require('modname') -- 'modname' 모듈의 업데이트된 버전을 로드합니
 [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) 플러그인에는 이걸 대신해주는 [커스텀 함수](https://github.com/nvim-lua/plenary.nvim/blob/master/lua/plenary/reload.lua)가 있습니다.
 
 
-### Don't pad Lua strings!
-### 루아 문자열에 공백을 채우지 마세요!
+### 루아 문자열 양 끝에 공백을 넣지 마세요!
 
 이중 중괄호 스트링을 사용할 때 양 끝에 공백 문자를 넣지 마세요. 스페이스가 무시되는 맥락에서는 괜찮지만, whitespace가 의미있을 때는 디버깅 하기 어려운 문제를 일으킬 수 있습니다:
 
@@ -1411,7 +1408,7 @@ nvim -V1
 
 ### Transpilers
 
-루아를 사용하는 것의 이점 중 하나는 루아 코드로 작성하지 않아도 된다는 것입니다! 루아를 위한 다양한 트랜스파일러들이 있습니다.
+루아 사용의 이점 중 하나는 꼭 루아 코드로 작성하지 않아도 된다는 것입니다! 루아를 위한 다양한 트랜스파일러들이 있습니다.
 
 - [Moonscript](https://moonscript.org/)
 
