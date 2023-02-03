@@ -1,6 +1,6 @@
 :arrow_upper_left: (Feeling lost? Use the GitHub TOC!)
 
-# Neovim에서 Lua 사용하기
+# 네오빔에서 루아 사용하기
 
 ## 번역
 
@@ -36,7 +36,7 @@
 
 알림: 네오빔에 내장된 루아 컴파일러는 [LuaJIT](https://staff.fnwi.uva.nl/h.vandermeer/docs/lua/luajit/luajit_intro.html) 2.1.0 버전입니다. 루아 5.1 버전과 호환 가능합니다.
 
-### 네오빔에서 루아를 작성하는 법에 대한 튜토리얼들
+### 네오빔에서의 루아 작성법에 대한 튜토리얼들
 
 루아로 플러그인 작성 방법에 대한 튜토리얼들은 이미 있습니다. 그 중에서 이 가이드를 쓰는데 도움을 받은 글들도 있습니다. 작성자들에게 감사드립니다.
 
