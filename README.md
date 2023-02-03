@@ -31,7 +31,7 @@
 - [루아 공식 레퍼런스 매뉴얼](https://www.lua.org/manual/5.1/)은 가장 광범위한 자료를 둘러볼 수 있습니다.(빔 에디터 내에서 읽고 싶다면 Vimdoc 플러그인으로도 있습니다.: [milisims/nvim-luaref](https://github.com/milisims/nvim-luaref))
 
 먼저 루아는 깔끔하고 단순한 언어라는 것을 말씀드리고 싶습니다. 쉽게 배울 수 있습니다.
-특히 자바스크립트 같은 스트립팅 언어에 경험이 있다면 더욱 쉽게 배울 수 있으실 겁니다.
+특히 자바스크립트 같은 스트립팅 언어에 경험이 있다면 더욱 쉽게 배우실 수 있을 겁니다.
 어쩌면 이미 생각보다 더 많은 것을 알고 계실지도 모르지요.
 
 알림: 네오빔에 내장된 루아 컴파일러는 [LuaJIT](https://staff.fnwi.uva.nl/h.vandermeer/docs/lua/luajit/luajit_intro.html) 2.1.0 버전입니다. 루아 5.1 버전과 호환 가능합니다.
