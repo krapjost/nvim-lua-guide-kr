@@ -1397,7 +1397,6 @@ nvim -V1
 
 ### vim.treesitter
 
-`vim.treesitter` is the module that controls the integration of the [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) library in Neovim. If you want to know more about Tree-sitter, you may be interested in this [presentation (38:37)](https://www.youtube.com/watch?v=Jes3bD6P0To).
 `vim.treesitter`는 Neovim [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) 라이브러리의 통합을 제어하는 모듈입니다. Tree-sitter에 대해 더 자세히 알고 싶다면 다음 [프레젠테이션 (38:37)](https://www.youtube.com/watch?v=Jes3bD6P0To)을 참조하세요.
 
 
