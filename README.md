@@ -24,7 +24,7 @@
 루아 언어에 익숙하지 않다면 여기 시작하기 좋은 자료들이 있습니다:
 
 - ['X를 Y분 만에 배우자'의 루아 페이지](https://learnxinyminutes.com/docs/lua/)에서는 기본적인 것들을 빠르게 훑어볼 수 있습니다.
-- [이 가이드](https://github.com/medwatt/알림s/blob/main/Lua/Lua_Quick_Guide.ipynb)도 빠르게 시작하기 좋은 자료입니다.
+- [이 가이드](https://github.com/medwatt/Notes/tree/main/Lua/Lua_Quick_Guide.ipynb)도 빠르게 시작하기 좋은 자료입니다.
 - 당신이 비디오로 배우는 것을 더 선호한다면 Derek Banas의 [1시간 짜리 튜토리얼](https://www.youtube.com/watch?v=iMacxZQMPXs)도 있습니다.
 - 실행 가능한 예제와 함께 좀 더 인터랙티브하게 배우고 싶다면 [루아 스크립트 튜토리얼](https://www.luascript.dev/learn)도 있습니다.
 - [루아 유저 위키](http://lua-users.org/wiki/LuaDirectory)에는 루아와 관련된 유용한 정보들이 많이 있습니다.
